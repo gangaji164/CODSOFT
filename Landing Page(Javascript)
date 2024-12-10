@@ -1,0 +1,88 @@
+// Access the camera
+const startCamera = document.getElementById('startCamera');
+const video = document.getElementById('video');
+const overlay = document.getElementById('overlay');
+
+// Start the camera
+startCamera.addEventListener('click', async () => {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        video.srcObject = stream;
+        overlay.style.display = 'block'; // Show overlay when the camera starts
+    } catch (err) {
+        alert('Error accessing the camera. Please check your permissions.');
+        console.error('Camera access error:', err);
+    }
+});
+
+// Set overlay when clicking on a product
+document.querySelectorAll('.product-item img').forEach((item) => {
+    item.addEventListener('click', () => {
+        overlay.src = item.src; // Set overlay to the clicked item's image
+        overlay.style.display = 'block'; // Ensure overlay is visible
+
+        // Adjust overlay size with slider
+const sizeSlider = document.getElementById('sizeSlider');
+sizeSlider.addEventListener('input', () => {
+    overlay.style.transform = `scale(${sizeSlider.value})`;
+
+});
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const overlay = document.getElementById('overlay');
+
+// Initialize Mediapipe Pose
+const pose = new Pose({
+    locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`,
+});
+
+pose.setOptions({
+    modelComplexity: 1,
+    smoothLandmarks: true,
+    enableSegmentation: false,
+    minDetectionConfidence: 0.5,
+    minTrackingConfidence: 0.5,
+});
+
+pose.onResults(onResults);
+
+// Access the camera
+const camera = new Camera(video, {
+    onFrame: async () => {
+        await pose.send({ image: video });
+    },
+    width: 640,
+    height: 480,
+});
+camera.start();
+
+// Handle Pose Results
+function onResults(results) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(results.image, 0, 0, canvas.width, canvas.height);
+
+    if (results.poseLandmarks) {
+        const leftShoulder = results.poseLandmarks[11];
+        const rightShoulder = results.poseLandmarks[12];
+        const leftHip = results.poseLandmarks[23];
+        const rightHip = results.poseLandmarks[24];
+
+        // Calculate the center and size of the torso for overlay
+        const centerX = (leftShoulder.x + rightShoulder.x) / 2 * canvas.width;
+        const centerY = (leftShoulder.y + leftHip.y) / 2 * canvas.height;
+        const width = Math.abs(rightShoulder.x - leftShoulder.x) * canvas.width * 1.5;
+        const height = Math.abs(leftHip.y - leftShoulder.y) * canvas.height * 1.5;
+
+        // Draw clothing overlay
+        const img = new Image();
+        img.src = overlay.src; // Use selected clothing image
+        img.onload = () => {
+            ctx.drawImage(img, centerX - width / 2, centerY - height / 2, width, height);
+        };
+    }
+}
+
+
+    });
+});
