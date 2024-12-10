@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Website with Camera</title>
+    <link rel="stylesheet" href="b.css">
+    
+</head>
+<body>
+    <header>
+        <h1>Glamour Vogue Style</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#camera">Try-On Camera</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>Welcome to GVS</h2>
+        <p>Discover the latest trends and try them on virtually using your camera!</p>
+    </section>
+    
+    <section id="products">
+        <h2>Our Products</h2>
+        <div class="product-list">
+            <div class="product-item">
+                <img src="shirt.avif" alt="Trendy Shirt">
+                <h3>Trendy Shirt</h3>
+                <p>$25.99</p>
+            </div>
+            <div class="product-item">
+                <img src="pict.png" alt="Stylish Dress">
+                <h3>Stylish Dress</h3>
+                <p>$49.99</p>
+            </div>
+                <div class="product-item">
+                    <img src="s.avif" alt="street style">
+                    <h3>Street Style</h3>
+                    <p>$25.99</p>
+                </div>
+        </div>
+    </section>
+
+    <section id="camera">
+        <h2>Try Clothes in Real-Time</h2>
+        <div class="camera-container">
+            <video id="video" autoplay></video>
+            <!-- Overlay for clothes -->
+            <img id="overlay" style="display: none;" />
+        </div>
+        <button id="startCamera">Start Camera</button>
+    </section>
+    <footer>
+        <p>&copy; 2024 Fashion Studio. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose"></script>
+
+    <script src="c.js"></script>
+</body>
+</html>
