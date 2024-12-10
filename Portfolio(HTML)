@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PORTFOLIO</title>
+    <link rel="stylesheet" href="A.CSS">
+</head>
+<body>
+    <div class="b1">
+        <nav>
+            <ul>
+               <li> <a href="#">HOME</a></li>
+               <li>  <a href="#">ABOUT</a></li>
+                <li> <a href="#">EXPERIENCE</a></li>
+                    <li> <a href="#">HIRE ME</a></li>
+                    <li> <a href="#">CONTACT</a></li>
+
+            </ul>
+        </nav>
+       
+        
+        <div class="im">
+        </div>
+        <div class="b2">
+            <h1>I'm <span>GANGA GUPTA <br></span>a Web Developer </h1>
+            <p>This is my official Portfolio website.<br>ganga04082005@gmail.com</p>
+       
+        <a href="GangaGuptaResume.pdf">DOWNLOAD RESUME</a>
+
+    </div>
+    <div class="box1" >
+        <a href="https://www.linkedin.com/in/ganga-gupta-2b5258315/" class="box2"><img src="linke.png" alt="" height="50px" width="50px"></a>
+        <a href="https://github.com/gangaji164" class="box3"><img src="git.jpg" alt="Profile" height="50px" width="50px"></a>
+    </div>
+    <div class="bo">
+        <img src="logo.png" class="box4" height="500px" width="500px">
+    </div>
+    </div>
+    
+</body>
+</html>
